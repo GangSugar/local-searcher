@@ -8,4 +8,3 @@ pinyin_first VARCHAR(50) NOT NULL,
 size BIGINT NOT NULL,
 last_modified TIMESTAMP NOT NULL
 );
-SELECT * FROM file_meta;

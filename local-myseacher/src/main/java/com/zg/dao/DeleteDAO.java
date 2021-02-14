@@ -12,8 +12,9 @@ import java.util.stream.Collectors;
 
 public class DeleteDAO {
     //1.数据库的删除操作
-    public void delete(List<Integer> idList) throws SQLException {
-        Connection c = DBUtil.getConnection();//因为利用了ThreadLocal实现了一个线程都有自己的connection对象，因此不需要关闭
+    public void delete(List<Integer> idList) {
+        try{
+            Connection c = DBUtil.getConnection();//因为利用了ThreadLocal实现了一个线程都有自己的connection对象，因此不需要关闭
             // JDK8 中支持的 stream 用法，把id映射成一个？占位符
             List<String> placeholderList = idList.stream()
                     .map(id -> "?")//采用stream流，因为idList是一个集合，但是下面根据id删除的时候，要把一个id看作一个占位符？
@@ -37,12 +38,15 @@ public class DeleteDAO {
                 LogUtil.log("执行SQL语句：%s",s.toString());
                 s.executeUpdate();
             }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
 
 
     }
 
     public static void main(String[] args) throws SQLException {
-        List<Integer> idList = Arrays.asList(1,2,3);
+        List<Integer> idList = Arrays.asList(4,5,6);
         DeleteDAO dao = new DeleteDAO();
 
         dao.delete(idList);

@@ -20,7 +20,7 @@ public class DBUtil {
         try {
             String classesPath = DBUtil.class.getProtectionDomain()
                     .getCodeSource().getLocation().getFile();
-            File classesDir = new File(URLDecoder.decode(classesPath, "UTF-8"));
+            File classesDir = new File(URLDecoder.decode(classesPath, "UTF-8"));//解码
             String path = classesDir.getParent() + File.separator + "searcher.db";
             LogUtil.log("数据库文件路径为: %s", path);
             return path;

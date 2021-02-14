@@ -1,5 +1,6 @@
 package com.zg;
 
+import com.zg.service.DBService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +29,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        //1.在入口这里进行数据库的初始化
+        DBService service = new DBService();
+        service.init();//这样可以保证在进来的时候数据库已经化成功
+
         launch(args);
     }
 }

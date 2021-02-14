@@ -29,12 +29,12 @@
             </TableColumn>
             <TableColumn fx:id="sizeColumn" prefWidth="120" text="大小">
                 <cellValueFactory>
-                    <PropertyValueFactory property="sizeText"/>
+                    <PropertyValueFactory property="lengthUI"/>
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="lastModifiedColumn" prefWidth="160" text="修改时间">
                 <cellValueFactory>
-                    <PropertyValueFactory property="lastModifiedText"/>
+                    <PropertyValueFactory property="lastModifiedUI"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>
